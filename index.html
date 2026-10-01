@@ -1,200 +1,565 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ihza Rafi Maulana · Network Infrastructure</title>
+    <meta name="description" content="Ihza Rafi Maulana runs network infrastructure for 100+ sites: MikroTik, wireless, multi-site VPN, Proxmox, monitoring and automation for Network Operations.">
+    <meta name="theme-color" content="#D9DDD6">
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rafi.web.id/">
+    <meta property="og:title" content="Ihza Rafi Maulana · Network Infrastructure">
+    <meta property="og:description" content="Multi-site networks, VPN, monitoring and automation for 100+ sites.">
+    <meta property="og:image" content="https://rafi.web.id/assets/img/rafi.jpg">
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-        
-        <title>Ihza Rafi Maulana</title>
-        <link rel="icon" href="assets/img/rafi.png" type="image/x-icon">
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">Ihza Rafi Maulana</a>
+    <!-- set the language before first paint, so the page never flashes the wrong one -->
+    <script>
+        (function () {
+            var lang = null
+            try { lang = localStorage.getItem('lang') } catch (e) {}
+            if (lang !== 'en' && lang !== 'id') {
+                lang = (navigator.language || '').toLowerCase().indexOf('id') === 0 ? 'id' : 'en'
+            }
+            document.documentElement.setAttribute('data-lang', lang)
+            document.documentElement.lang = lang
+        })()
+    </script>
+
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <a class="skip" href="#about"><span lang="en">Skip to content</span><span lang="id">Langsung ke konten</span></a>
+
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="#top" aria-label="rafi.web.id">
+                <img class="brand__mark" src="assets/img/favicon.png" alt="" width="28" height="28">
+                <span class="brand__name">rafi.web.id</span>
+            </a>
+            <nav class="nav" aria-label="Sections">
+                <a class="nav__link" href="#about"><span lang="en">About</span><span lang="id">Tentang</span></a>
+                <a class="nav__link" href="#scale"><span lang="en">Scale</span><span lang="id">Skala</span></a>
+                <a class="nav__link" href="#projects"><span lang="en">Projects</span><span lang="id">Proyek</span></a>
+                <a class="nav__link" href="#building"><span lang="en">In the works</span><span lang="id">Pengerjaan</span></a>
+                <a class="nav__link" href="#skills">Skills</a>
+                <a class="nav__link nav__link--cta" href="#contact"><span lang="en">Contact</span><span lang="id">Kontak</span></a>
+            </nav>
+            <div class="lang" role="group" aria-label="Language / Bahasa">
+                <button class="lang__btn" type="button" data-set-lang="en" aria-pressed="true">EN</button>
+                <button class="lang__btn" type="button" data-set-lang="id" aria-pressed="false">ID</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!--===== HERO =====-->
+        <section class="hero wrap" aria-labelledby="hero-title">
+            <div class="hero__text">
+                <p class="eyebrow">Network Infrastructure · Observability · Automation</p>
+                <h1 class="hero__title" id="hero-title">Ihza Rafi<br>Maulana</h1>
+                <p class="hero__lead" lang="en">I look after the network for 100+ sites (routers, wireless, site-to-site VPN, virtualization and monitoring) and build the internal tools a Network Operations team needs to stay on top of it.</p>
+                <p class="hero__lead" lang="id">Saya mengurus jaringan di 100+ site, mulai dari router, wireless, VPN antar-site, virtualisasi, sampai monitoring. Saya juga membangun tools internal supaya kerja tim Network Operations lebih rapi dan terukur.</p>
+                <div class="hero__actions">
+                    <a class="btn btn--solid" href="#projects"><span lang="en">See projects</span><span lang="id">Lihat proyek</span></a>
+                    <a class="btn" href="#contact"><span lang="en">Get in touch</span><span lang="id">Hubungi saya</span></a>
                 </div>
+            </div>
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+            <figure class="card hero__photo">
+                <img src="assets/img/rafi.jpg" alt="Ihza Rafi Maulana on Jalan Petaling, Kuala Lumpur" width="900" height="1306" fetchpriority="high">
+                <figcaption class="hero__stack">
+                    <span class="card__label"><span lang="en">Daily stack</span><span lang="id">Stack harian</span></span>
+                    <ul class="tags">
+                        <li>MikroTik</li><li>WireGuard</li><li>Proxmox</li><li>Prometheus</li><li>NetBox</li><li>Ansible</li>
+                    </ul>
+                </figcaption>
+            </figure>
+        </section>
+
+        <!--===== ABOUT =====-->
+        <section class="section wrap" id="about" aria-labelledby="about-title">
+            <header class="section__head">
+                <p class="eyebrow"><span lang="en">About</span><span lang="id">Tentang</span></p>
+                <h2 class="section__title" id="about-title">
+                    <span lang="en">I keep <span class="nowrap">multi-site</span> networks running, and build whatever's missing to run them well.</span>
+                    <span lang="id">Saya jaga jaringan <span class="nowrap">multi-site</span> tetap jalan, dan bangun sendiri tools yang belum ada.</span>
+                </h2>
+            </header>
+
+            <div class="about">
+                <article class="card about__bio" data-reveal>
+                    <p lang="en">I manage network infrastructure for multi-site operations: branch-to-HQ connectivity, remote access, wireless, virtualization and monitoring.</p>
+                    <p lang="id">Fokus saya di network infrastructure untuk operasional multi-site: koneksi cabang ke head office, remote access, wireless, virtualisasi, dan monitoring.</p>
+                    <p class="about__sub" lang="en">The work runs from on-site troubleshooting to designing the systems operations rely on every day, using MikroTik, WireGuard, Proxmox, Prometheus, NetBox, Ansible and n8n.</p>
+                    <p class="about__sub" lang="id">Kerjaannya mulai dari troubleshooting langsung di lokasi sampai merancang sistem yang dipakai tim operasional setiap hari, dengan MikroTik, WireGuard, Proxmox, Prometheus, NetBox, Ansible, dan n8n.</p>
+                </article>
+
+                <article class="card about__now" data-reveal>
+                    <h3 class="card__label"><span lang="en">Currently building</span><span lang="id">Lagi dikerjakan</span></h3>
+                    <ul class="nowlist">
+                        <li><b>Orbiv Meridian</b><span lang="en">NetOps control plane</span><span lang="id">Control plane untuk NetOps</span></li>
+                        <li><b>AI Agent for NetOps</b><span lang="en">Read-only first, operator approval</span><span lang="id">Read-only dulu, approval operator</span></li>
+                        <li><b>CCTV AI rollout</b><span lang="en">80+ sites, 100+ AI Boxes</span><span lang="id">80+ site, 100+ AI Box</span></li>
+                        <li><b>Central firewall</b><span lang="en">OPNsense on Proxmox</span><span lang="id">OPNsense di Proxmox</span></li>
+                    </ul>
+                    <a class="textlink" href="#building"><span lang="en">See details</span><span lang="id">Lihat detail</span> <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="card about__principles" data-reveal>
+                    <h3 class="card__label"><span lang="en">How I work</span><span lang="id">Cara saya kerja</span></h3>
+                    <ul class="checklist">
+                        <li><span lang="en">Visibility before scale</span><span lang="id">Visibility dulu, baru scale</span></li>
+                        <li><span lang="en">Least-privilege access, every time</span><span lang="id">Akses seperlunya, bukan seadanya</span></li>
+                        <li><span lang="en">Documentation that survives a handover</span><span lang="id">Dokumentasi yang tetap kepakai setelah handover</span></li>
+                        <li><span lang="en">Solutions sized for the team that runs them</span><span lang="id">Solusi yang pas dengan ukuran timnya</span></li>
+                    </ul>
+                </article>
+
+                <article class="card about__work" data-reveal>
+                    <h3 class="card__label"><span lang="en">Experience</span><span lang="id">Pengalaman</span></h3>
+                    <ul class="companies">
+                        <li><a href="https://new.hwgroup.id/" target="_blank" rel="noopener">HW Group <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.sgp-dkp.com/" target="_blank" rel="noopener">Duta Kalingga Pratama <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://www.quantum.net.id/" target="_blank" rel="noopener">Quantum Tera Network <span aria-hidden="true">↗</span></a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!--===== SCALE =====-->
+        <section class="section wrap" id="scale" aria-labelledby="scale-title">
+            <header class="section__head">
+                <p class="eyebrow"><span lang="en">Operational scale</span><span lang="id">Skala operasional</span></p>
+                <h2 class="section__title" id="scale-title">
+                    <span lang="en">1,000+ VPN peers. 500+ access points. No room for guesswork.</span>
+                    <span lang="id">1.000+ peer VPN. 500+ access point. Nggak ada ruang buat tebak-tebakan.</span>
+                </h2>
+            </header>
+
+            <div class="racks">
+                <div class="rack" data-reveal>
+                    <h3 class="rack__label"><span lang="en">At the branches</span><span lang="id">Di cabang</span></h3>
+                    <ul class="rack__units">
+                        <li class="unit"><span class="unit__num">100+</span><span class="unit__name"><span lang="en">Sites / branches</span><span lang="id">Site / cabang</span></span></li>
+                        <li class="unit"><span class="unit__num">100+</span><span class="unit__name"><span lang="en">MikroTik routers</span><span lang="id">Router MikroTik</span></span></li>
+                        <li class="unit"><span class="unit__num">500+</span><span class="unit__name"><span lang="en">Wireless access points</span><span lang="id">Wireless access point</span></span></li>
+                        <li class="unit"><span class="unit__num">200+</span><span class="unit__name"><span lang="en">Managed switches</span><span lang="id">Managed switch</span><small>Huawei · Ruijie · Aruba · UniFi</small></span></li>
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
+                <div class="rack" data-reveal>
+                    <h3 class="rack__label">Server &amp; VPN</h3>
+                    <ul class="rack__units">
+                        <li class="unit"><span class="unit__num">5</span><span class="unit__name"><span lang="en">VPN servers</span><span lang="id">VPN server</span><small lang="en">AWS and on-prem</small><small lang="id">AWS dan on-premise</small></span></li>
+                        <li class="unit"><span class="unit__num"><span lang="en">1,000+</span><span lang="id">1.000+</span></span><span class="unit__name"><span lang="en">VPN peers</span><span lang="id">Peer VPN</span><small>WireGuard · Tailscale</small></span></li>
+                        <li class="unit"><span class="unit__num">2</span><span class="unit__name"><span lang="en">Proxmox servers</span><span lang="id">Server Proxmox</span></span></li>
+                        <li class="unit"><span class="unit__num">20+</span><span class="unit__name"><span lang="en">Production VMs</span><span lang="id">Production VM</span></span></li>
+                    </ul>
                 </div>
-            </nav>
-        </header>
-
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Rafi</span><br>Tech Enthusiast</h1>
-
-                    <a href="#contact" class="button">Contact</a>
-                </div>
-
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/ihza-rafi-maulana/" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/xraphh" class="home__social-icon"><i class='bx bxl-github' ></i></a>
-                    <a href="https://www.behance.net/ihzarafimaulana" class="home__social-icon"><i class='bx bxl-behance' ></i></a>
-                </div>
-
-                <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/rafi.png"/>
-                        </g>
-                    </svg>
-                </div>
-            </section>
-
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
-
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/about-rafi.jpg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">Ihza Rafi Maulana</h2>
-                        <p class="about__text">I am a technology enthusiast, and I love learning new things. I have worked in IT for 7 years and I am an expert in Networking. My dream is to become a DevOps. Therefore, I am currently taking a course to become a DevOps.</p>           
-                    </div>                                   
-                </div>
-            </section>
-
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">After working for several years, I have experience as  an expert and am currently learning more about it.</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx skills__icon'></i>
-                                <span class="skills__name">IT Support</span>
-                            </div>
-                            <div class="skills__bar skills__ITSupport">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">Expert</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx skills__icon'></i>
-                                <span class="skills__name">Network Engineer</span>
-                            </div>
-                            <div class="skills__bar skills__networkEngineer">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">Competent</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx skills__icon' ></i>
-                                <span class="skills__name">IT Security</span>
-                            </div>
-                            <div class="skills__bar skills__ITSecurity">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">Beginner</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx skills__icon'></i>
-                                <span class="skills__name">DevOps</span>
-                            </div>
-                            <div class="skills__bar skills__DevOps">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">Beginner</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/bg-skill.jpg" alt="" class="skills__img">
-                    </div>
-                </div>
-            </section>
-
-            <!--===== WORK =====-->
-            <section class="work section" id="work">
-                <h2 class="section-title">Work Experience</h2>
-
-                <div class="work__container bd-grid">
-                    <a href="https://new.hwgroup.id/" class="work__img">
-                        <img src="assets/img/hwg.jpg" alt="HW GROUP">
-                    </a>
-                    <a href="https://www.sgp-dkp.com/" class="work__img">
-                        <img src="assets/img/dkp.png" alt="DUTA KALINGGA PRATAMA">
-                    </a>
-                    <a href="https://www.quantum.net.id/" class="work__img">
-                        <img src="assets/img/qtn.png" alt="QUANTUM TERA NETWORK">
-                    </a>
-                </div>
-            </section>
-
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
-
-                <div class="contact__container bd-grid">
-                    <form action="https://formsubmit.co/ihzarfm12@gmail.com" method="POST" class="contact__form">
-                        <!-- <input type="hidden" name="access_key" value="03fd4629-4745-44bc-a0d1-81d413d7523a"> -->
-                        <input type="text" placeholder="name" class="contact__input" required>
-                        <input type="email" name="email" placeholder="email" class="contact__input" required>
-                        <textarea name="message" id="" cols="0" rows="10" class="contact__input" required></textarea>
-                        <!-- <input type="hidden" name="redirect" value="https://web3forms.com/success"> -->
-                        <button type="submit" class="contact__button button">Submit</button>
-                        <!-- <input type="button" value="Submit" class="contact__button button"> -->
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Ihza Rafi Maulana</p>
-            <div class="footer__social">
-                <a href="#" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
             </div>
-            <p class="footer__copy">&#169; ihzarfm</p>
-        </footer>
+        </section>
 
+        <!--===== FEATURED PROJECTS =====-->
+        <section class="section wrap" id="projects" aria-labelledby="projects-title">
+            <header class="section__head">
+                <p class="eyebrow"><span lang="en">Featured projects</span><span lang="id">Proyek utama</span></p>
+                <h2 class="section__title" id="projects-title">
+                    <span lang="en">Running in production, not just on a slide.</span>
+                    <span lang="id">Sudah jalan di production, bukan cuma di slide.</span>
+                </h2>
+            </header>
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+            <div class="projects">
+                <article class="card project" data-reveal>
+                    <div class="project__main">
+                        <span class="status status--active">Active</span>
+                        <h3 class="project__title">Multi-Site VPN Infrastructure for 100+ Branches</h3>
+                        <p class="project__summary" lang="en">VPN infrastructure linking head office, servers and every branch. It carries network operations, remote access and centralized CCTV management.</p>
+                        <p class="project__summary" lang="id">Infrastruktur VPN yang menghubungkan head office, server, dan semua cabang. Dipakai untuk operasional jaringan, remote access, dan pengelolaan CCTV dari satu tempat.</p>
+                        <ul class="figures">
+                            <li class="figure"><b>5</b><span lang="en">VPN servers</span><span lang="id">VPN server</span></li>
+                            <li class="figure"><b><span lang="en">1,000+</span><span lang="id">1.000+</span></b>peer</li>
+                            <li class="figure"><b>100+</b><span lang="en">branches</span><span lang="id">cabang</span></li>
+                        </ul>
+                    </div>
+                    <div class="project__side">
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Contribution</span><span lang="id">Kontribusi</span></dt>
+                                <dd lang="en">Built the VPN servers from scratch, designed a large-scale config rollout, and run the servers, peers, routing and connectivity troubleshooting.</dd>
+                                <dd lang="id">Bangun VPN server dari nol, rancang rollout konfigurasi skala besar, lalu kelola server, peer, routing, dan troubleshooting konektivitasnya.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Implementation</span><span lang="id">Implementasi</span></dt>
+                                <dd lang="en">WireGuard and Tailscale deployment, NAT, firewall, route recovery and peer lifecycle management.</dd>
+                                <dd lang="id">Deploy WireGuard dan Tailscale, NAT, firewall, route recovery, dan peer lifecycle management.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Outcome</span><span lang="id">Hasil</span></dt>
+                                <dd lang="en">Inter-site and CCTV access is managed centrally over VPN, across AWS and on-prem.</dd>
+                                <dd lang="id">Akses antar-site dan CCTV sekarang dikelola terpusat lewat VPN, baik di AWS maupun on-premise.</dd>
+                            </div>
+                        </dl>
+                        <ul class="tags">
+                            <li>WireGuard</li><li>Tailscale</li><li>MikroTik RouterOS</li><li>AWS</li><li>Ubuntu</li>
+                        </ul>
+                    </div>
+                </article>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+                <article class="card project" data-reveal>
+                    <div class="project__main">
+                        <span class="status status--active"><span lang="en">Active · still evolving</span><span lang="id">Active · terus dikembangkan</span></span>
+                        <h3 class="project__title">Multi-Site Network &amp; Infrastructure Monitoring</h3>
+                        <p class="project__summary" lang="en">Availability monitoring for local POS servers, routers, VPN links and ISP lines across 100+ locations, including broadband links with no public IP.</p>
+                        <p class="project__summary" lang="id">Monitoring availability untuk server POS lokal, router, koneksi VPN, dan jalur ISP di 100+ lokasi, termasuk broadband yang tidak punya IP publik.</p>
+                        <ul class="figures">
+                            <li class="figure"><b>400+</b><span lang="en">endpoints monitored</span><span lang="id">endpoint dipantau</span></li>
+                            <li class="figure"><b>100+</b><span lang="en">POS servers</span><span lang="id">server POS</span></li>
+                            <li class="figure"><b>200+</b><span lang="en">ISP links</span><span lang="id">koneksi ISP</span></li>
+                        </ul>
+                    </div>
+                    <div class="project__side">
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Challenge</span><span lang="id">Tantangan</span></dt>
+                                <dd lang="en">Keeping 100+ Windows 11 POS servers, routers and two ISP links per site visible, when many of those links are broadband with no public IP.</dd>
+                                <dd lang="id">Menjaga 100+ server POS Windows 11, router, dan dua ISP di tiap site tetap terpantau, padahal banyak koneksinya broadband tanpa public IP.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Contribution</span><span lang="id">Kontribusi</span></dt>
+                                <dd lang="en">Built a lightweight stack on Gatus and ICMP to watch every endpoint from one place, without taking over server management.</dd>
+                                <dd lang="id">Bangun monitoring ringan pakai Gatus dan ICMP untuk memantau semua endpoint dari satu tempat, tanpa ambil alih manajemen server.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Outcome</span><span lang="id">Hasil</span></dt>
+                                <dd lang="en">Flaky servers, dropped VPN links and router or ISP faults now show up early, in a single view.</dd>
+                                <dd lang="id">Server yang sering offline, VPN yang putus, dan gangguan router atau ISP sekarang kelihatan lebih awal dari satu tampilan.</dd>
+                            </div>
+                        </dl>
+                        <details class="more">
+                            <summary><span lang="en">Observability pilot &amp; next steps</span><span lang="id">Pilot observability &amp; next step</span></summary>
+                            <dl class="facts">
+                                <div>
+                                    <dt><span lang="en">Implementation</span><span lang="id">Implementasi</span></dt>
+                                    <dd lang="en">ICMP health checks per branch for POS servers, routers, VPN links and ISP lines.</dd>
+                                    <dd lang="id">ICMP health check per cabang untuk server POS, router, VPN, dan link ISP.</dd>
+                                </div>
+                                <div>
+                                    <dt>Pilot</dt>
+                                    <dd lang="en">Prometheus, Grafana and Loki in the office environment, where user count and bandwidth are much higher.</dd>
+                                    <dd lang="id">Prometheus, Grafana, dan Loki di lingkungan office, yang jumlah user dan bandwidth-nya jauh lebih tinggi.</dd>
+                                </div>
+                                <div>
+                                    <dt>Next</dt>
+                                    <dd lang="en">Evaluating the pilot and a local data-collection strategy before rolling logging out to every site. Centralized monitoring over WAN leaves metric gaps whenever a link drops, even for a few seconds.</dd>
+                                    <dd lang="id">Evaluasi hasil pilot dan strategi local data collection sebelum logging diperluas ke semua site. Monitoring terpusat lewat WAN bisa menyisakan metric gap tiap kali koneksi putus, walau cuma beberapa detik.</dd>
+                                </div>
+                            </dl>
+                        </details>
+                        <ul class="tags">
+                            <li>Gatus</li><li>ICMP</li><li>Prometheus</li><li>Grafana</li><li>Loki</li><li>MikroTik RouterOS</li><li>Windows 11</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="card project" data-reveal>
+                    <div class="project__main">
+                        <span class="status status--active">Active</span>
+                        <h3 class="project__title">Proxmox Infrastructure for Staging &amp; Production</h3>
+                        <p class="project__summary" lang="en">Started as a way to reuse idle bare-metal hardware instead of paying for cloud servers. It grew from personal testing into the dev team's staging environment, and now runs production services.</p>
+                        <p class="project__summary" lang="id">Awalnya inisiatif memanfaatkan bare metal yang nganggur sebagai pengganti biaya cloud server. Dari testing pribadi, sekarang dipakai untuk staging tim development sampai layanan production.</p>
+                        <ul class="figures">
+                            <li class="figure"><b>2</b><span lang="en">Proxmox servers</span><span lang="id">server Proxmox</span></li>
+                            <li class="figure"><b>20+</b><span lang="en">production VMs</span><span lang="id">production VM</span></li>
+                        </ul>
+                    </div>
+                    <div class="project__side">
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Contribution</span><span lang="id">Kontribusi</span></dt>
+                                <dd lang="en">Initiated and built the Proxmox environment from zero, set up VMs for the dev team, then grew capacity for staging and production.</dd>
+                                <dd lang="id">Inisiasi dan bangun environment Proxmox dari nol, siapkan VM untuk tim development, lalu perbesar kapasitasnya untuk staging dan production.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Implementation</span><span lang="id">Implementasi</span></dt>
+                                <dd lang="en">Proxmox install and upkeep, VM provisioning, bridges and internal subnets, storage checks, backups, host and service maintenance.</dd>
+                                <dd lang="id">Instalasi dan pengelolaan Proxmox, VM provisioning, bridge dan internal subnet, storage check, backup, serta maintenance host dan layanan.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Outcome</span><span lang="id">Hasil</span></dt>
+                                <dd lang="en">Hardware that was sitting idle now runs active internal infrastructure, with less reliance on cloud servers.</dd>
+                                <dd lang="id">Hardware yang tadinya nganggur sekarang jadi infrastruktur internal yang aktif, dan ketergantungan ke cloud server berkurang.</dd>
+                            </div>
+                        </dl>
+                        <ul class="tags">
+                            <li>Proxmox VE</li><li>Linux</li><li>VM</li><li>LXC</li><li>Docker</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!--===== IN THE WORKS =====-->
+        <section class="section wrap" id="building" aria-labelledby="building-title">
+            <header class="section__head">
+                <p class="eyebrow"><span lang="en">In the works</span><span lang="id">Dalam pengerjaan</span></p>
+                <h2 class="section__title" id="building-title">
+                    <span lang="en">On the bench: from design docs to field rollout.</span>
+                    <span lang="id">Masih di meja kerja: dari dokumen desain sampai rollout di lapangan.</span>
+                </h2>
+            </header>
+
+            <div class="devgrid">
+                <article class="card dev" data-reveal>
+                    <span class="status status--dev">Design &amp; development</span>
+                    <h3 class="dev__title">Orbiv Meridian: NetOps Control Plane</h3>
+                    <p lang="en">One interface for inventory, service status, monitoring, automation, config backup and operational activity.</p>
+                    <p lang="id">Satu interface untuk inventory, status layanan, monitoring, automation, config backup, dan aktivitas operasional.</p>
+                    <dl class="facts">
+                        <div>
+                            <dt><span lang="en">Goal</span><span lang="id">Tujuan</span></dt>
+                            <dd lang="en">Cut down the scattered data and tools involved in running a multi-site network.</dd>
+                            <dd lang="id">Mengurangi data dan tools yang tercecer dalam mengelola jaringan multi-site.</dd>
+                        </div>
+                        <div>
+                            <dt><span lang="en">Initial scope</span><span lang="id">Scope awal</span></dt>
+                            <dd lang="en">Standardizing and migrating the inventory of 80+ sites into NetBox: locations, devices, IPs, ISPs, POS, network, CCTV, status and supporting docs.</dd>
+                            <dd lang="id">Standardisasi dan migrasi inventory 80+ site ke NetBox: lokasi, device, IP, ISP, POS, network, CCTV, status, dan dokumen pendukung.</dd>
+                        </div>
+                    </dl>
+                    <details class="more">
+                        <summary><span lang="en">Integrations &amp; progress</span><span lang="id">Integrasi &amp; progress</span></summary>
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Integrations</span><span lang="id">Integrasi</span> <em class="plan"><span lang="en">planned</span><span lang="id">rencana</span></em></dt>
+                                <dd lang="en">NetBox as source of truth, Ansible for automation, Oxidized for config backup, Gatus and Prometheus for monitoring.</dd>
+                                <dd lang="id">NetBox sebagai source of truth, Ansible untuk automation, Oxidized untuk config backup, Gatus dan Prometheus untuk monitoring.</dd>
+                            </div>
+                            <div>
+                                <dt>Progress</dt>
+                                <dd lang="en">PRD, architecture, integration specs, roadmap, user roles and audit foundation.</dd>
+                                <dd lang="id">PRD, arsitektur, integration spec, roadmap, user role, dan audit foundation.</dd>
+                            </div>
+                        </dl>
+                    </details>
+                    <ul class="tags">
+                        <li>NetBox</li><li>Ansible</li><li>Oxidized</li><li>Gatus</li><li>Prometheus</li><li>PostgreSQL</li><li>n8n</li><li>Docker</li>
+                    </ul>
+                </article>
+
+                <article class="card dev" data-reveal>
+                    <span class="status status--dev">In development</span>
+                    <h3 class="dev__title">AI Agent for Network Operations</h3>
+                    <p lang="en">An internal assistant that helps the NetOps team dig into harder problems, review completed work, and turn operational data into short reports.</p>
+                    <p lang="id">Asisten internal untuk bantu tim NetOps membedah masalah yang lebih kompleks, mengevaluasi hasil kerja, dan meringkas data operasional jadi report.</p>
+                    <dl class="facts">
+                        <div>
+                            <dt><span lang="en">Goal</span><span lang="id">Tujuan</span></dt>
+                            <dd lang="en">Faster analysis and review. The operator still makes the final call.</dd>
+                            <dd lang="id">Analisis dan evaluasi lebih cepat. Keputusan akhir tetap di operator.</dd>
+                        </div>
+                        <div>
+                            <dt><span lang="en">Approach</span><span lang="id">Pendekatan</span></dt>
+                            <dd lang="en">Tool and workflow integration through n8n and a private bot. Starts with read-only access, environment isolation, restricted credentials, and operator approval before anything sensitive.</dd>
+                            <dd lang="id">Integrasi tool dan workflow lewat n8n dan private bot. Dimulai dari read-only access, environment isolation, credential yang dibatasi, dan approval operator sebelum ada tindakan sensitif.</dd>
+                        </div>
+                    </dl>
+                    <details class="more">
+                        <summary><span lang="en">Capabilities &amp; progress</span><span lang="id">Kemampuan &amp; progress</span></summary>
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Capabilities</span><span lang="id">Kemampuan</span></dt>
+                                <dd lang="en">Pulling context from monitoring and operational workflows, narrowing down likely root causes, checking work against playbooks, and writing report summaries.</dd>
+                                <dd lang="id">Menggabungkan konteks dari monitoring dan workflow operasional, bantu cari kemungkinan root cause, mengecek pekerjaan berdasarkan playbook, dan menyusun report summary.</dd>
+                            </div>
+                            <div>
+                                <dt>Progress</dt>
+                                <dd lang="en">Baseline agent is deployed, with model and bot connections live. Skills, playbooks, SSH access and credential handling are in progress.</dd>
+                                <dd lang="id">Baseline agent sudah di-deploy, koneksi model dan bot sudah jalan. Skills, playbook, akses SSH, dan pengelolaan credential sedang disusun.</dd>
+                            </div>
+                        </dl>
+                    </details>
+                    <ul class="tags">
+                        <li>Hermes Agent</li><li>AI Router Gateway</li><li>n8n</li><li>Telegram</li><li>Discord</li><li>Docker</li><li>SSH</li><li>Ansible Vault</li>
+                    </ul>
+                </article>
+
+                <article class="card dev" data-reveal>
+                    <span class="status status--dev">Rollout &amp; development</span>
+                    <h3 class="dev__title">Multi-Site CCTV AI &amp; Edge Analytics</h3>
+                    <p lang="en">AI Boxes on top of existing CCTV for automated attendance, visitor analytics and security monitoring across sites.</p>
+                    <p lang="id">AI Box di atas infrastruktur CCTV untuk absensi otomatis, analitik pengunjung, dan pemantauan keamanan di banyak site.</p>
+                    <ul class="figures">
+                        <li class="figure"><b>80+</b>site</li>
+                        <li class="figure"><b>100+</b>AI Box</li>
+                        <li class="figure"><b>300+</b><span lang="en">CCTV cameras</span><span lang="id">kamera CCTV</span></li>
+                    </ul>
+                    <dl class="facts">
+                        <div>
+                            <dt><span lang="en">Contribution</span><span lang="id">Kontribusi</span></dt>
+                            <dd lang="en">Planning and running a phased infrastructure rollout: cameras, AI Boxes, racks, switches, uplinks, UPS, ISP and VPN connectivity, plus device operations and maintenance.</dd>
+                            <dd lang="id">Merencanakan dan menjalankan rollout infrastruktur bertahap: kamera, AI Box, rack, switch, uplink, UPS, konektivitas ISP dan VPN, sampai operasional dan maintenance perangkat.</dd>
+                        </div>
+                    </dl>
+                    <details class="more">
+                        <summary><span lang="en">Problem, goals &amp; challenges</span><span lang="id">Masalah, tujuan &amp; tantangan</span></summary>
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Problem</span><span lang="id">Masalah</span></dt>
+                                <dd lang="en">Attendance depended on staff discipline, so check-ins were forgotten or buddy-punched. Data on visitor numbers, profiles, dwell time and per-site performance was limited.</dd>
+                                <dd lang="id">Absensi masih bergantung pada kedisiplinan karyawan, jadi rawan lupa atau buddy punching. Data jumlah dan karakteristik pengunjung, dwell time, dan performa tiap site juga masih minim.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Operations</span><span lang="id">Operasional</span></dt>
+                                <dd lang="en">Face-recognition attendance to cut missed check-ins and fraud, with results the relevant team can still review.</dd>
+                                <dd lang="id">Face recognition attendance untuk mengurangi lupa absen dan fraud, dengan hasil yang tetap bisa di-review tim terkait.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Business</span><span lang="id">Bisnis</span></dt>
+                                <dd lang="en">Visitor counts, estimated visitor profiles and dwell time to support site evaluation and promo planning.</dd>
+                                <dd lang="id">Visitor count, estimasi profil pengunjung, dan dwell time untuk evaluasi site dan perencanaan promo.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Security</span><span lang="id">Keamanan</span></dt>
+                                <dd lang="en">Alerts to the security team when someone on a watchlist is detected, so incidents get followed up faster.</dd>
+                                <dd lang="id">Tim security dapat indikasi kalau ada individu dalam watchlist yang terdeteksi, jadi bisa ditindaklanjuti lebih cepat.</dd>
+                            </div>
+                            <div>
+                                <dt><span lang="en">Challenges</span><span lang="id">Tantangan</span></dt>
+                                <dd lang="en">Keeping hundreds of devices available and consistently configured, camera input quality, access control, result validation and biometric data governance.</dd>
+                                <dd lang="id">Menjaga availability dan konsistensi konfigurasi ratusan perangkat, kualitas input kamera, access control, validasi hasil, dan tata kelola data biometrik.</dd>
+                            </div>
+                        </dl>
+                    </details>
+                    <ul class="tags">
+                        <li>IP camera</li><li>AI Box</li><li>Face recognition</li><li>Edge computing</li><li>SFP+</li><li>UPS</li>
+                    </ul>
+                </article>
+
+                <article class="card dev" data-reveal>
+                    <span class="status status--research">Research &amp; development</span>
+                    <h3 class="dev__title">Centralized Firewall for Server Infrastructure</h3>
+                    <p lang="en">An OPNsense-based virtual security appliance for centralized access control to the servers I manage.</p>
+                    <p lang="id">Virtual security appliance berbasis OPNsense untuk kontrol akses terpusat ke server yang saya kelola.</p>
+                    <dl class="facts">
+                        <div>
+                            <dt><span lang="en">Problem</span><span lang="id">Masalah</span></dt>
+                            <dd lang="en">Firewall control is scattered: native Linux firewalls on each server, plus rules on the routers.</dd>
+                            <dd lang="id">Kontrol firewall masih tersebar: native Linux firewall di tiap server dan rules di router.</dd>
+                        </div>
+                        <div>
+                            <dt><span lang="en">Goal</span><span lang="id">Tujuan</span></dt>
+                            <dd lang="en">OPNsense as the security gateway between the transit network and server subnets, for a standard firewall policy, segmentation and admin access control.</dd>
+                            <dd lang="id">OPNsense jadi security gateway antara transit network dan server subnet, untuk standardisasi firewall, segmentasi, dan kontrol akses administratif.</dd>
+                        </div>
+                    </dl>
+                    <details class="more">
+                        <summary><span lang="en">Progress &amp; next steps</span><span lang="id">Progress &amp; next step</span></summary>
+                        <dl class="facts">
+                            <div>
+                                <dt><span lang="en">Contribution</span><span lang="id">Kontribusi</span></dt>
+                                <dd lang="en">Deployed OPNsense on Proxmox, worked through rule design and traffic flow, and tested integration with MikroTik routing and WireGuard.</dd>
+                                <dd lang="id">Deploy OPNsense di Proxmox, pelajari rule design dan traffic flow, lalu uji integrasinya dengan routing MikroTik dan WireGuard.</dd>
+                            </div>
+                            <div>
+                                <dt>Progress</dt>
+                                <dd lang="en">Admin access and routing work in the test environment. Rule evaluation and documentation are ongoing.</dd>
+                                <dd lang="id">Akses administratif dan routing di lingkungan uji sudah jalan. Evaluasi rule dan dokumentasi masih berlangsung.</dd>
+                            </div>
+                            <div>
+                                <dt>Next</dt>
+                                <dd lang="en">Firewall policy baseline, protected-service mapping, access rule testing and a rollback procedure before going to production.</dd>
+                                <dd lang="id">Firewall policy baseline, pemetaan protected service, testing access rule, dan rollback procedure sebelum masuk production.</dd>
+                            </div>
+                        </dl>
+                    </details>
+                    <ul class="tags">
+                        <li>OPNsense</li><li>Proxmox</li><li>MikroTik RouterOS</li><li>WireGuard</li><li>Static routing</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!--===== SKILLS =====-->
+        <section class="section wrap" id="skills" aria-labelledby="skills-title">
+            <header class="section__head">
+                <p class="eyebrow">Core skills</p>
+                <h2 class="section__title" id="skills-title">
+                    <span lang="en">Grouped by the job, not by percentage bars.</span>
+                    <span lang="id">Dikelompokkan per kerjaan, bukan pakai persen-persenan.</span>
+                </h2>
+            </header>
+
+            <div class="skills">
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Network Infrastructure</h3>
+                    <p lang="en">Multi-site networks, routing, firewalls, VLANs, VPNs, wireless and connectivity troubleshooting.</p>
+                    <p lang="id">Jaringan multi-site, routing, firewall, VLAN, VPN, wireless, dan troubleshooting konektivitas.</p>
+                    <ul class="tags"><li>MikroTik RouterOS</li><li>WireGuard</li><li>Tailscale</li><li>UniFi</li><li>Huawei</li><li>Ruijie</li><li>Aruba</li></ul>
+                </article>
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Systems &amp; Virtualization</h3>
+                    <p lang="en">Linux administration, virtualization, containers, storage and internal services.</p>
+                    <p lang="id">Administrasi Linux, virtualisasi, container, storage, dan layanan internal.</p>
+                    <ul class="tags"><li>Linux</li><li>Proxmox VE</li><li>VM / LXC</li><li>Docker</li><li>OPNsense</li></ul>
+                </article>
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Monitoring &amp; Observability</h3>
+                    <p lang="en">Device and service monitoring, dashboards, alerting, logging and incident analysis.</p>
+                    <p lang="id">Monitoring perangkat dan layanan, dashboard, alerting, logging, dan analisis gangguan.</p>
+                    <ul class="tags"><li>Prometheus</li><li>Grafana</li><li>Loki</li><li>Gatus</li><li>Alertmanager</li><li>SNMP</li></ul>
+                </article>
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Automation &amp; Integration</h3>
+                    <p lang="en">Automating operational work, API integrations, workflows, scripting and internal bots.</p>
+                    <p lang="id">Otomasi kerjaan operasional, integrasi API, workflow, scripting, dan bot internal.</p>
+                    <ul class="tags"><li>Ansible</li><li>n8n</li><li>Bash</li><li>REST API</li><li>Telegram bot</li></ul>
+                </article>
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Infrastructure Documentation</h3>
+                    <p lang="en">Device inventory, IPAM/DCIM, config backups, topology docs and handovers.</p>
+                    <p lang="id">Inventaris perangkat, IPAM/DCIM, backup konfigurasi, dokumentasi topologi, dan handover.</p>
+                    <ul class="tags"><li>NetBox</li><li>IPAM / DCIM</li><li>Oxidized</li></ul>
+                </article>
+                <article class="card skill" data-reveal>
+                    <h3 class="skill__title">Internal Tools</h3>
+                    <p lang="en">Designing and building AI-assisted internal apps for Network Operations.</p>
+                    <p lang="id">Merancang dan membangun aplikasi internal berbantuan AI untuk Network Operations.</p>
+                    <ul class="tags"><li>PostgreSQL</li><li>Docker</li><li>n8n</li><li>AI agent</li></ul>
+                </article>
+            </div>
+        </section>
+
+        <!--===== CONTACT =====-->
+        <section class="section wrap" id="contact" aria-labelledby="contact-title">
+            <div class="card contact" data-reveal>
+                <div class="contact__text">
+                    <p class="eyebrow"><span lang="en">Contact</span><span lang="id">Kontak</span></p>
+                    <h2 class="section__title" id="contact-title">
+                        <span lang="en">Have a <span class="nowrap">multi-site</span> network that needs sorting out?</span>
+                        <span lang="id">Punya jaringan <span class="nowrap">multi-site</span> yang perlu dirapikan?</span>
+                    </h2>
+                    <p class="contact__note" lang="en">Send me an email, or have a look at my work on GitHub.</p>
+                    <p class="contact__note" lang="id">Kirim email saja, atau lihat kerjaan saya di GitHub.</p>
+                </div>
+                <ul class="contact__links">
+                    <li><a class="contact__link" href="mailto:ihzarfm12@gmail.com"><span class="mono">Email</span>ihzarfm12@gmail.com<span class="contact__arrow" aria-hidden="true">→</span></a></li>
+                    <li><a class="contact__link" href="https://github.com/ihzarfm" target="_blank" rel="noopener"><span class="mono">GitHub</span>ihzarfm<span class="contact__arrow" aria-hidden="true">↗</span></a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer wrap">
+        <p>&copy; <span class="js-year">2026</span> Ihza Rafi Maulana</p>
+        <a href="#top"><span lang="en">Back to top</span><span lang="id">Kembali ke atas</span> ↑</a>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
 </html>

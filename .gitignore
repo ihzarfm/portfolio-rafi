@@ -1,0 +1,10 @@
+# local agent tooling, not part of the site
+.agents/
+.claude/
+skills-lock.json
+
+# draft content source for the site
+my-portfolio.md
+
+.DS_Store
+Thumbs.db

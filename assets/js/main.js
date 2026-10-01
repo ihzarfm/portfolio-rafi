@@ -1,57 +1,74 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+/*===== YEAR =====*/
+document.querySelectorAll('.js-year').forEach(el => {
+    el.textContent = new Date().getFullYear()
+})
 
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+/*===== LANGUAGE SWITCH =====*/
+/* The initial language is set by the inline script in <head>; this only handles clicks. */
+const langButtons = document.querySelectorAll('[data-set-lang]')
+
+function applyLang(lang) {
+    const root = document.documentElement
+    root.setAttribute('data-lang', lang)
+    root.lang = lang
+    langButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang)))
 }
-showMenu('nav-toggle','nav-menu')
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-    const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
-
-const scrollActive = () =>{
-    const scrollDown = window.scrollY
-
-  sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight,
-              sectionTop = current.offsetTop - 58,
-              sectionId = current.getAttribute('id'),
-              sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
-        
-        if(scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight){
-            sectionsClass.classList.add('active-link')
-        }else{
-            sectionsClass.classList.remove('active-link')
-        }                                                    
+langButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const lang = btn.dataset.setLang
+        applyLang(lang)
+        try { localStorage.setItem('lang', lang) } catch (e) { /* private mode: choice just isn't remembered */ }
     })
+})
+
+applyLang(document.documentElement.getAttribute('data-lang') || 'en')
+
+/*===== ACTIVE NAV LINK =====*/
+const navLinks = [...document.querySelectorAll('.nav__link[href^="#"]')]
+const sections = navLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+
+if ('IntersectionObserver' in window && sections.length) {
+    /* A section counts as "current" when it crosses a thin band near the top third of the viewport. */
+    const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            const id = `#${entry.target.id}`
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === id) link.setAttribute('aria-current', 'location')
+                else link.removeAttribute('aria-current')
+            })
+        })
+    }, { rootMargin: '-30% 0px -65% 0px' })
+
+    sections.forEach(section => navObserver.observe(section))
 }
-window.addEventListener('scroll', scrollActive)
 
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-//     reset: true
-});
+/*===== SCROLL REVEAL =====*/
+/* Elements only get the hidden .reveal state via JS, so a failed/blocked
+   script never leaves content stuck invisible - it just skips the animation. */
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll('[data-reveal]')
+    revealTargets.forEach(el => el.classList.add('reveal'))
 
-sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
-sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+    const STAGGER_MS = 60
+    const MAX_STAGGERED = 5
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        /* Stagger by position within this batch, so cards that scroll in
+           together cascade, but a lone card further down never waits. */
+        entries
+            .filter(entry => entry.isIntersecting)
+            .forEach((entry, i) => {
+                entry.target.style.setProperty('--reveal-delay', `${Math.min(i, MAX_STAGGERED) * STAGGER_MS}ms`)
+                entry.target.classList.add('is-visible')
+                obs.unobserve(entry.target)
+            })
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+
+    revealTargets.forEach(el => observer.observe(el))
+}
