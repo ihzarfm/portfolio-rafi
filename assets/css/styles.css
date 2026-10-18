@@ -307,7 +307,7 @@ html[data-lang="id"] [lang="en"] { display: none !important; }
 
 .figures {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(86px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.5rem;
 }
 .figure {
@@ -324,7 +324,7 @@ html[data-lang="id"] [lang="en"] { display: none !important; }
   font-family: var(--font-display);
   font-stretch: 80%;
   font-weight: 750;
-  font-size: clamp(1.3rem, 1rem + 1.5vw, 1.625rem);
+  font-size: 1.125rem;
   line-height: 1.1;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
@@ -597,7 +597,7 @@ html[data-lang="id"] [lang="en"] { display: none !important; }
   font-family: var(--font-display);
   font-stretch: 75%;
   font-weight: 800;
-  font-size: 2.25rem;
+  font-size: 1.125rem;
   line-height: 1;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
@@ -816,7 +816,7 @@ html[data-lang="id"] [lang="en"] { display: none !important; }
   .skills,
   .contact { grid-template-columns: 1fr; }
   .unit { grid-template-columns: 5.25rem 1fr; min-height: 68px; }
-  .unit__num { font-size: 1.875rem; }
+  .unit__num { font-size: 0.875rem; }
   .contact__link { grid-template-columns: 1fr auto; }
   .contact__link .mono { grid-column: 1 / -1; }
 }
@@ -832,6 +832,6 @@ html[data-lang="id"] [lang="en"] { display: none !important; }
 @media (max-width: 400px) {
   .rack { --rail: 16px; }
   .unit { grid-template-columns: 4.25rem 1fr; gap: 0.75rem; padding: 0.6rem 0.75rem; min-height: 60px; }
-  .unit__num { font-size: 1.5rem; }
+  .unit__num { font-size: 0.875rem; }
   .figure { padding: 0.65rem 0.6rem; }
 }

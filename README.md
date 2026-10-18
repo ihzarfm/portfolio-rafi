@@ -12,25 +12,25 @@ Website: [rafi.web.id](https://rafi.web.id) · Email: [ihzarfm12@gmail.com](mail
 
 | At the branches | | Servers & VPN | |
 |---|---|---|---|
-| Sites / branches | **100+** | VPN servers (AWS + on-prem) | **5** |
-| MikroTik routers | **100+** | VPN peers (WireGuard, Tailscale) | **1,000+** |
-| Wireless access points | **500+** | Proxmox servers | **2** |
-| Managed switches (Huawei, Ruijie, Aruba, UniFi) | **200+** | Production VMs | **20+** |
+| Sites / branches | **Hundreds** | VPN servers (AWS + on-prem) | **Several** |
+| MikroTik routers | **Hundreds** | VPN peers (WireGuard, Tailscale) | **Thousands** |
+| Wireless access points | **Hundreds** | Proxmox servers | **Several** |
+| Managed switches (Huawei, Ruijie, Aruba, UniFi) | **Hundreds** | Production VMs | **Dozens** |
 
 ## Featured projects
 
-### Multi-Site VPN Infrastructure for 100+ Branches · `Active`
+### Multi-Site VPN Infrastructure · `Active`
 VPN infrastructure linking head office, servers and every branch, used for network operations, remote access and centralized CCTV management.
 - Built the VPN servers from scratch, designed a large-scale config rollout, and run the servers, peers, routing and troubleshooting.
 - WireGuard and Tailscale, NAT, firewall, route recovery, peer lifecycle management.
-- **5 VPN servers · 1,000+ peers · 100+ branches**, across AWS and on-prem.
+- **Several VPN servers · thousands of peers · hundreds of branches**, across AWS and on-prem.
 
 `WireGuard` `Tailscale` `MikroTik RouterOS` `AWS` `Ubuntu`
 
 ### Multi-Site Network & Infrastructure Monitoring · `Active`
-Availability monitoring for local POS servers, routers, VPN links and ISP lines across 100+ locations, including broadband links with no public IP.
+Availability monitoring for local POS servers, routers, VPN links and ISP lines across hundreds of locations, including broadband links with no public IP.
 - Lightweight monitoring on Gatus and ICMP that watches every endpoint from one place, without taking over server management.
-- **400+ endpoints**: 100+ POS servers (Windows 11), 100+ routers, 200+ ISP links.
+- **Hundreds of endpoints**: hundreds of POS servers (Windows 11), hundreds of routers, hundreds of ISP links.
 - Observability pilot with Prometheus, Grafana and Loki in the office environment. Next step is a local data-collection strategy, since centralized monitoring over WAN leaves metric gaps whenever a link drops.
 
 `Gatus` `ICMP` `Prometheus` `Grafana` `Loki` `MikroTik RouterOS`
@@ -38,7 +38,7 @@ Availability monitoring for local POS servers, routers, VPN links and ISP lines 
 ### Proxmox Infrastructure for Staging & Production · `Active`
 Started as a way to reuse idle bare-metal hardware instead of paying for cloud servers. It grew from personal testing into the dev team's staging environment, and now runs production services.
 - Built the environment from zero: VM provisioning, bridges and internal subnets, storage checks, backups, host maintenance.
-- **2 Proxmox servers · 20+ production VMs**, with less reliance on cloud servers.
+- **Several Proxmox servers · dozens of production VMs**, with less reliance on cloud servers.
 
 `Proxmox VE` `Linux` `LXC` `Docker`
 
@@ -46,9 +46,9 @@ Started as a way to reuse idle bare-metal hardware instead of paying for cloud s
 
 | Project | Status | Summary |
 |---|---|---|
-| **Orbiv Meridian**: NetOps control plane | Design & development | One interface for inventory, service status, monitoring, automation and config backup. Starting with migrating the inventory of 80+ sites into NetBox. Planned integrations: Ansible, Oxidized, Gatus, Prometheus. |
+| **Orbiv Meridian**: NetOps control plane | Design & development | One interface for inventory, service status, monitoring, automation and config backup. Starting with migrating the inventory of dozens of sites into NetBox. Planned integrations: Ansible, Oxidized, Gatus, Prometheus. |
 | **AI Agent for Network Operations** | In development | Internal assistant for root-cause analysis, reviewing work against playbooks, and report summaries. Read-only access, isolated environment, operator approval before anything sensitive. |
-| **Multi-Site CCTV AI & Edge Analytics** | Rollout & development | AI Boxes on existing CCTV for face-recognition attendance, visitor analytics and watchlist alerts. Rollout across 80+ sites, 100+ AI Boxes, 300+ cameras. |
+| **Multi-Site CCTV AI & Edge Analytics** | Rollout & development | AI Boxes on existing CCTV for face-recognition attendance, visitor analytics and watchlist alerts. Rollout across dozens of sites, hundreds of AI Boxes, hundreds of cameras. |
 | **Centralized Firewall for Server Infrastructure** | Research & development | OPNsense on Proxmox as the security gateway between the transit network and server subnets. Admin access and routing work in the test environment. |
 
 ## Core skills
